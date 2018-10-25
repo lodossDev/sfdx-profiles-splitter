@@ -1,6 +1,9 @@
 sfdx-profiles-splitter
 ==
 
+## install
+sfdx plugins:install sfdx-profiles-splitter
+
 <!-- usage -->
 ```sh-session
 $ npm install -g sfdx-profiles-splitter
