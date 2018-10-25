@@ -1,7 +1,5 @@
 sfdx-profiles-splitter
 ==
-<!-- install -->
-$ sfdx plugins:install sfdx-profiles-splitter
 
 <!-- usage -->
 ```sh-session
@@ -9,13 +7,14 @@ $ npm install -g sfdx-profiles-splitter
 $ sfdx COMMAND
 running command...
 $ sfdx (-v|--version|version)
-sfdx-profiles-splitter/0.0.1 darwin-x64 node-v8.12.0
+sfdx-profiles-splitter/0.1.0 darwin-x64 node-v8.12.0
 $ sfdx --help [COMMAND]
 USAGE
   $ sfdx COMMAND
 ...
 ```
 <!-- usagestop -->
+
 <!-- commands -->
 * [`sfdx metadata:profiles:convert`](#sfdx-metadataprofilesconvert)
 * [`sfdx metadata:profiles:merge`](#sfdx-metadataprofilesmerge)
@@ -48,7 +47,7 @@ EXAMPLE
   		//Converts full profiles into json or xml, !!!! does not split !!!!.
 ```
 
-_See code: [src/commands/metadata/profiles/convert.ts](https://github.com/lodossDev/sfdx-profiles-splitter/blob/v0.0.1/src/commands/metadata/profiles/convert.ts)_
+_See code: [src/commands/metadata/profiles/convert.ts](https://github.com/lodossDev/sfdx-profiles-splitter/blob/v0.1.0/src/commands/metadata/profiles/convert.ts)_
 
 ## `sfdx metadata:profiles:merge`
 
@@ -75,7 +74,7 @@ EXAMPLE
   		//Merges profiles located in specified input dir and copies them into the output dir.
 ```
 
-_See code: [src/commands/metadata/profiles/merge.ts](https://github.com/lodossDev/sfdx-profiles-splitter/blob/v0.0.1/src/commands/metadata/profiles/merge.ts)_
+_See code: [src/commands/metadata/profiles/merge.ts](https://github.com/lodossDev/sfdx-profiles-splitter/blob/v0.1.0/src/commands/metadata/profiles/merge.ts)_
 
 ## `sfdx metadata:profiles:split`
 
@@ -102,5 +101,5 @@ EXAMPLE
   		//Splits profiles located in specified input dir and copies them into the output dir.
 ```
 
-_See code: [src/commands/metadata/profiles/split.ts](https://github.com/lodossDev/sfdx-profiles-splitter/blob/v0.0.1/src/commands/metadata/profiles/split.ts)_
+_See code: [src/commands/metadata/profiles/split.ts](https://github.com/lodossDev/sfdx-profiles-splitter/blob/v0.1.0/src/commands/metadata/profiles/split.ts)_
 <!-- commandsstop -->
