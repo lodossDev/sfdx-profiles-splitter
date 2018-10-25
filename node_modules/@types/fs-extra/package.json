@@ -1,0 +1,44 @@
+{
+    "name": "@types/fs-extra",
+    "version": "5.0.4",
+    "description": "TypeScript definitions for fs-extra",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Alan Agius",
+            "url": "https://github.com/alan-agius4",
+            "githubUsername": "alan-agius4"
+        },
+        {
+            "name": "midknight41",
+            "url": "https://github.com/midknight41",
+            "githubUsername": "midknight41"
+        },
+        {
+            "name": "Brendan Forster",
+            "url": "https://github.com/shiftkey",
+            "githubUsername": "shiftkey"
+        },
+        {
+            "name": "Mees van Dijk",
+            "url": "https://github.com/mees-",
+            "githubUsername": "mees-"
+        },
+        {
+            "name": "Justin Rockwood",
+            "url": "https://github.com/jrockwood",
+            "githubUsername": "jrockwood"
+        }
+    ],
+    "main": "",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git"
+    },
+    "scripts": {},
+    "dependencies": {
+        "@types/node": "*"
+    },
+    "typesPublisherContentHash": "f197e9a0f94046aecb8193b8ec62bff102c805f17d4bef5d3cda7442fb11255f",
+    "typeScriptVersion": "2.2"
+}

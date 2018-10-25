@@ -1,0 +1,27 @@
+import { ActionBase } from './action/base';
+import Errors, { CLIError, Options as ErrorOptions } from './errors';
+import { ExitError } from './exit';
+import { IPromptOptions } from './prompt';
+import * as Table from './styled/table';
+import { config, Config } from './config';
+export declare const cli: {
+    config: Config;
+    trace: (...data: any[]) => void;
+    debug: (...data: any[]) => void;
+    info: (...data: any[]) => void;
+    log: (...data: any[]) => void;
+    warn: (input: string | Error, opts?: ErrorOptions) => void;
+    error: (input: string | Error, opts?: ErrorOptions) => void;
+    fatal: (input: string | Error, opts?: ErrorOptions) => void;
+    exit(code?: number, error?: Error | undefined): never;
+    readonly prompt: (name: string, options?: IPromptOptions) => Promise<any>;
+    readonly confirm: (message: string) => Promise<boolean>;
+    readonly action: ActionBase;
+    styledObject(obj: any, keys?: string[] | undefined): void;
+    readonly styledHeader: (header: string) => void;
+    readonly styledJSON: (obj: any) => void;
+    readonly table: typeof Table.default;
+    done(): Promise<void>;
+};
+export default cli;
+export { config, ActionBase, CLIError, Config, ErrorOptions, Errors, ExitError, IPromptOptions, Table };

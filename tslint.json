@@ -1,0 +1,12 @@
+{
+	"extends": "@salesforce/dev-config/tslint",
+	"rules": {
+		"no-any": false,
+		"ordered-imports": false,
+		"indent": [true, "tabs", 4]
+	},
+	"linterOptions": {
+		"exclude": "**/*.json"
+	}
+  }
+  
