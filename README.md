@@ -5,13 +5,14 @@ $ sfdx plugins:install sfdx-profiles-splitter
 
 <!-- usage -->
 ```sh-session
+$ npm install -g sfdx-profiles-splitter
 $ sfdx COMMAND
 running command...
 $ sfdx (-v|--version|version)
-sfdx-profiles-splitter/0.0.1 darwin-x64 node-v8.9.4
-$ sfdx metadata:profiles --help [COMMAND]
+sfdx-profiles-splitter/0.0.1 darwin-x64 node-v8.12.0
+$ sfdx --help [COMMAND]
 USAGE
-  $ sfdx metadata:profiles COMMAND convert|split|merge
+  $ sfdx COMMAND
 ...
 ```
 <!-- usagestop -->

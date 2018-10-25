@@ -51,6 +51,7 @@
         "description": "Commands to split and merge profiles."
       }
     },
+    "bin": "sfdx",
     "devPlugins": [
       "@oclif/plugin-help"
     ]
