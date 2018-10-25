@@ -7,22 +7,22 @@ import config = require('../../../shared/config.json');
 import chalk from 'chalk';
 
 function createModel(key, value) {
-    const data = {
-        _declaration: {
-            _attributes: {
-                version: '1.0',
-                encoding: 'UTF-8'
-            }
-        },
-        Profile: {
-            _attributes: {
-                xmlns: 'http://soap.sforce.com/2006/04/metadata'
-            }
-        }
-    };
+	const data = {
+		_declaration: {
+			_attributes: {
+				version: '1.0',
+				encoding: 'UTF-8'
+			}
+		},
+		Profile: {
+			_attributes: {
+				xmlns: 'http://soap.sforce.com/2006/04/metadata'
+			}
+		}
+	};
 
-    data.Profile[key] = value;
-    return data;
+	data.Profile[key] = value;
+	return data;
 }
 
 export default class Split extends SfdxCommand {

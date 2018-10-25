@@ -26,15 +26,15 @@ function createModel() {
 }
 
 async function getDirs(location) {
-    let dirs = [];
+	let dirs = [];
 
-    for (const file of await fs.readdir(location)) {
-        if ((await fs.stat(path.join(location, file))).isDirectory()) {
-            dirs = [...dirs, path.join(location, file)];
-        }
-    }
+	for (const file of await fs.readdir(location)) {
+		if ((await fs.stat(path.join(location, file))).isDirectory()) {
+			dirs = [...dirs, path.join(location, file)];
+		}
+	}
 
-    return dirs;
+	return dirs;
 }
 
 export default class Merge extends SfdxCommand {
