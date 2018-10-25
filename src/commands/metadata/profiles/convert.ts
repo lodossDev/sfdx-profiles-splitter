@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import config = require('../../../shared/config.json');
 import fs = require('fs-extra');
 import path = require('path');
-import convert = require('xml-js');
+import convert = require('xml-js'); 
 
 export default class Convert extends SfdxCommand {
 	public static description = 'Converts full profiles into json or xml format.';
@@ -12,7 +12,7 @@ export default class Convert extends SfdxCommand {
 	public static examples = [`
 		sfdx metadata:profiles:convert -f json -i force-app/main/default/profiles -o force-app/main/default/test
 		//Converts full profiles into json or xml, !!!! does not split !!!!.
-	`];  
+	`];   
 
 	protected static flagsConfig = {
 		format: flags.string({char: 'f', required: true, description: 'the output format i.e. json|xml.'}),
