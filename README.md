@@ -1,8 +1,23 @@
 sfdx-profiles-splitter
 ==
 
-## install
-sfdx plugins:install sfdx-profiles-splitter
+A plugin for splitting and merging Salesforce profiles.
+
+## Setup
+
+### Install from source
+
+1. Install the SDFX CLI.
+
+2. Clone the repository: `git clone git@github.com:lodossDev/sfdx-profiles-splitter.git`
+
+3. Install npm modules: `npm install`
+
+4. Link the plugin: `sfdx plugins:link .`
+
+### Install as plugin
+
+1. Install plugin: `sfdx plugins:install sfdx-profiles-splitter`
 
 ## Usage
 <!-- usage -->
