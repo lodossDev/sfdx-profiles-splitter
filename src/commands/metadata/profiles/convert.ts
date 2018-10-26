@@ -6,7 +6,7 @@ import fs = require('fs-extra');
 import path = require('path');
 import convert = require('xml-js'); 
 
-export default class Convert extends SfdxCommand {
+export default class Convert extends SfdxCommand { 
 	public static description = 'Converts full profiles into json or xml format.';
 
 	public static examples = [`
