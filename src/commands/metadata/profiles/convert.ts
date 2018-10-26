@@ -71,5 +71,5 @@ export default class Convert extends SfdxCommand {
 
 		// Return an object to be displayed with --json
 		return {};
-	}
+	} 
 }
