@@ -47,13 +47,14 @@ export default class Merge extends SfdxCommand {
 
     protected static flagsConfig = {
         input: flags.string({char: 'i', default: 'force-app/main/default/profiles', required: true, description: 'the input directory where the splitted profiles exist.'}),
-        output: flags.string({char: 'o', default: 'force-app/main/default/profiles', required: true, description: 'the output directory to store the full profiles.'})
+        output: flags.string({char: 'o', default: 'force-app/main/default/profiles', required: true, description: 'the output directory to store the full profiles.'}),
+        delete: flags.boolean({char: 'd', default: false, description: 'Delete the splitted profiles once merged?'}) 
     };
 
     // Set this to true if your command requires a project workspace; 'requiresProject' is false by default
     protected static requiresProject = false;
 
-    public async merge(inputDir: string, outputDir: string): Promise<any> {
+    public async merge(inputDir: string, outputDir: string, deleteProfile: boolean): Promise<any> {
         try {
             const root = path.resolve(inputDir);
 
@@ -95,6 +96,10 @@ export default class Merge extends SfdxCommand {
                     location + '/' + path.basename(rootDir) + '.profile',
                     convert.json2xml(JSON.stringify(model), config.xmlExport)
                 );
+
+                if (deleteProfile === true) {
+                    await fs.remove(rootDir);
+                }
             }
         } catch(ex) {
             this.ux.error(chalk.bold(chalk.red(ex)));
@@ -107,8 +112,9 @@ export default class Merge extends SfdxCommand {
     public async run(): Promise<core.AnyJson> {
         const inputDir = this.flags.input;
         const outputDir = this.flags.output;
+        const deleteProfile = this.flags.delete;
         
-        await this.merge(inputDir, outputDir);
+        await this.merge(inputDir, outputDir, deleteProfile);
 
         // Return an object to be displayed with --json
         return {};

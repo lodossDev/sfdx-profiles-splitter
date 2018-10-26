@@ -17,13 +17,14 @@ export default class Convert extends SfdxCommand {
     protected static flagsConfig = {
         format: flags.string({char: 'f', required: true, description: 'the output format i.e. json|xml.'}),
         input: flags.string({char: 'i', default: 'force-app/main/default/profiles', required: true, description: 'the input directory.'}),
-        output: flags.string({char: 'o', default: 'force-app/main/default/profiles', required: true, description: 'the output directory.'})
+        output: flags.string({char: 'o', default: 'force-app/main/default/profiles', required: true, description: 'the output directory.'}),
+        delete: flags.boolean({char: 'd', default: false, description: 'Delete the profiles once converted?'}) 
     };
 
     // Set this to true if your command requires a project workspace; 'requiresProject' is false by default
     protected static requiresProject = false;
 
-    public async convert(format: string, inputDir: string, outputDir: string): Promise<any> {
+    public async convert(format: string, inputDir: string, outputDir: string, deleteProfile: boolean): Promise<any> {
         try {
             const target = (format === 'xml' ? '.json' : '.profile');
             const output = (format === 'xml' ? '.profile' : '.json');
@@ -52,6 +53,10 @@ export default class Convert extends SfdxCommand {
                         const stream = convert.xml2js(file.toString(), config.jsonExport);
                         await fs.writeFile(newPath, JSON.stringify(stream));
                     }
+
+                    if (deleteProfile === true) {
+                        await fs.remove(root + '/' + fileName);
+                    }
                 }
             }
         } catch(ex) { 
@@ -66,8 +71,9 @@ export default class Convert extends SfdxCommand {
         const format = this.flags.format;
         const inputDir = this.flags.input;
         const outputDir = this.flags.output;
+        const deleteProfile = this.flags.delete;
 
-        await this.convert(format, inputDir, outputDir);
+        await this.convert(format, inputDir, outputDir, deleteProfile);
 
         // Return an object to be displayed with --json
         return {};

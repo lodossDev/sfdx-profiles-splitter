@@ -35,13 +35,14 @@ export default class Split extends SfdxCommand {
 
     protected static flagsConfig = {
         input: flags.string({char: 'i', default: 'force-app/main/default/profiles', required: true, description: 'the input directory where the full profiles exist.'}),
-        output: flags.string({char: 'o', default: 'force-app/main/default/profiles', required: true, description: 'the output directory to store the chunked profiles.'})
+        output: flags.string({char: 'o', default: 'force-app/main/default/profiles', required: true, description: 'the output directory to store the chunked profiles.'}),
+        delete: flags.boolean({char: 'd', default: false, description: 'Delete the existing profiles once converted?'}) 
     };
 
     // Set this to true if your command requires a project workspace; 'requiresProject' is false by default
     protected static requiresProject = false;
 
-    public async split(inputDir: string, outputDir: string): Promise<any> {
+    public async split(inputDir: string, outputDir: string, deleteProfile: boolean): Promise<any> {
         try {
             const root = path.resolve(inputDir);
 
@@ -120,6 +121,10 @@ export default class Split extends SfdxCommand {
                             );
                         }
                     }
+
+                    if (deleteProfile === true) {
+                        await fs.remove(root + '/' + fileName);
+                    }
                 }
             }
         } catch(ex) {
@@ -133,8 +138,9 @@ export default class Split extends SfdxCommand {
     public async run(): Promise<core.AnyJson> {
         const inputDir = this.flags.input;
         const outputDir = this.flags.output;
+        const deleteProfile = this.flags.delete;
         
-        await this.split(inputDir, outputDir);
+        await this.split(inputDir, outputDir, deleteProfile);
 
         // Return an object to be displayed with --json
         return {};

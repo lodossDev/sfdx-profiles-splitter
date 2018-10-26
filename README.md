@@ -11,7 +11,7 @@ A plugin for splitting and merging Salesforce profiles.
 
 2. Clone the repository: `git clone git@github.com:lodossDev/sfdx-profiles-splitter.git`
 
-3. Install npm modules: `npm install`
+3. (yarn)Install npm modules: `yarn install`
 
 4. Link the plugin: `sfdx plugins:link .`
 
@@ -26,7 +26,7 @@ $ npm install -g sfdx-profiles-splitter
 $ sfdx COMMAND
 running command...
 $ sfdx (-v|--version|version)
-sfdx-profiles-splitter/0.1.0 darwin-x64 node-v8.12.0
+sfdx-profiles-splitter/0.1.0 darwin-x64 node-v8.9.4
 $ sfdx --help [COMMAND]
 USAGE
   $ sfdx COMMAND
@@ -48,6 +48,7 @@ USAGE
   $ sfdx metadata:profiles:convert
 
 OPTIONS
+  -d, --delete                                    Delete the profiles once converted?
   -f, --format=format                             (required) the output format i.e. json|xml.
 
   -i, --input=input                               (required) [default: force-app/main/default/profiles] the input
@@ -62,8 +63,8 @@ OPTIONS
 
 EXAMPLE
 
-  		sfdx metadata:profiles:convert -f json -i force-app/main/default/profiles -o force-app/main/default/test
-  		//Converts full profiles into json or xml, !!!! does not split !!!!.
+           sfdx metadata:profiles:convert -f json -i force-app/main/default/profiles -o force-app/main/default/test
+           //Converts full profiles into json or xml, !!!! does not split !!!!.
 ```
 
 _See code: [src/commands/metadata/profiles/convert.ts](https://github.com/lodossDev/sfdx-profiles-splitter/blob/v0.1.0/src/commands/metadata/profiles/convert.ts)_
@@ -77,6 +78,8 @@ USAGE
   $ sfdx metadata:profiles:merge
 
 OPTIONS
+  -d, --delete                                    Delete the splitted profiles once merged?
+
   -i, --input=input                               (required) [default: force-app/main/default/profiles] the input
                                                   directory where the splitted profiles exist.
 
@@ -89,8 +92,8 @@ OPTIONS
 
 EXAMPLE
 
-  		sfdx metadata:profiles:merge -i force-app/main/default/profiles -o force-app/main/default/test
-  		//Merges profiles located in specified input dir and copies them into the output dir.
+           sfdx metadata:profiles:merge -i force-app/main/default/profiles -o force-app/main/default/test
+           //Merges profiles located in specified input dir and copies them into the output dir.
 ```
 
 _See code: [src/commands/metadata/profiles/merge.ts](https://github.com/lodossDev/sfdx-profiles-splitter/blob/v0.1.0/src/commands/metadata/profiles/merge.ts)_
@@ -104,6 +107,8 @@ USAGE
   $ sfdx metadata:profiles:split
 
 OPTIONS
+  -d, --delete                                    Delete the existing profiles once converted?
+
   -i, --input=input                               (required) [default: force-app/main/default/profiles] the input
                                                   directory where the full profiles exist.
 
@@ -116,8 +121,8 @@ OPTIONS
 
 EXAMPLE
 
-  		sfdx metadata:profiles:split -i force-app/main/default/profiles -o force-app/main/default/test
-  		//Splits profiles located in specified input dir and copies them into the output dir.
+           sfdx metadata:profiles:split -i force-app/main/default/profiles -o force-app/main/default/test
+           //Splits profiles located in specified input dir and copies them into the output dir.
 ```
 
 _See code: [src/commands/metadata/profiles/split.ts](https://github.com/lodossDev/sfdx-profiles-splitter/blob/v0.1.0/src/commands/metadata/profiles/split.ts)_
