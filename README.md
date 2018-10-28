@@ -3,6 +3,8 @@ sfdx-profiles-splitter
 
 A plugin for splitting and merging Salesforce profiles.
 
+[[https://github.com/lodossDev/sfdx-profiles-splitter/blob/master/images/Screenshot%202018-10-28%20at%2021.47.43.png?raw=true]]
+
 ## Setup
 
 ### Install from source
