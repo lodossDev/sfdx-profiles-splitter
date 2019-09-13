@@ -93,7 +93,7 @@ export default class Merge extends SfdxCommand {
                 }
 
                 await fs.writeFile( 
-                    location + '/' + path.basename(rootDir) + '.profile',
+                    location + '/' + path.basename(rootDir) + '.profile-meta.xml',
                     convert.json2xml(JSON.stringify(model), config.xmlExport)
                 );
 
