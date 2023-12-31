@@ -15,11 +15,26 @@
             "classAccesses": {
                 "nameTag": "apexClass"
             },
+            "customMetadataTypeAccesses": {
+                "nameTag": "name"
+            },
+            "customSettingAccesses": {
+                "nameTag": "name"
+            },
             "customPermissions": {
                 "nameTag": "name"
             },
+            "categoryGroupVisibilities": {
+                "nameTag": "dataCategoryGroup"
+            },
             "fieldPermissions": {
                 "nameTag": "field"
+            },
+            "flowAccesses": {
+                "nameTag": "flow"
+            },
+            "layoutAssignments": {
+                "nameTag": [ "layout", "recordType" ]
             },
             "loginIpRanges": {
                 "nameTag": "_self"
@@ -38,9 +53,6 @@
             },
             "userPermissions": {
                 "nameTag": "name"
-            },
-            "layoutAssignments": {
-                "nameTag": "layout"
             }
         },
         "metaTags": ["custom", "userLicense"]

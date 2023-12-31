@@ -87,19 +87,42 @@ export default class Split extends SfdxCommand {
                         }
     
                         if (Array.isArray(stream['Profile'][metadata])) {
+                            
                             if (targetName === '_self') {
+                                
                                 const model = createModel(metadata, stream['Profile'][metadata]);
     
                                 await fs.writeFile(
                                     itemRoot + '/' + metadata + '-meta.xml',
                                     convert.json2xml(JSON.stringify(model), config.xmlExport)
                                 );
+                                
                             } else {
+                                
                                 for (const item of stream['Profile'][metadata]) {
+                                    
                                     let model = createModel(metadata, [item]);
-    
+                                    
+                                    let fileName = '';
+                                    
+                                    if (Array.isArray(targetName)) {
+                                        
+                                        for (const targetNameItem of targetName) {
+                                            
+                                            if (item[targetNameItem]?._text) {
+                                                fileName += (fileName ? '#' : '') + item[targetNameItem]._text;
+                                            }
+                                            
+                                        }
+                                        
+                                    } else {
+                                        
+                                        fileName = item[targetName]._text;
+                                        
+                                    }
+                                    
                                     await fs.writeFile(
-                                        itemRoot + '/' + item[targetName]._text + '-meta.xml',
+                                        itemRoot + '/' + fileName + '-meta.xml',
                                         convert.json2xml(JSON.stringify(model), config.xmlExport)
                                     );
                                 }
@@ -110,13 +133,25 @@ export default class Split extends SfdxCommand {
                             let newFileName = '';
 
                             if (targetName === '_self') {
-                                newFileName = metadata + '-meta.xml';
+                                newFileName = metadata;
                             } else {
-                                newFileName = stream['Profile'][metadata][targetName]._text + '-meta.xml';
+                                if (Array.isArray(targetName)) {
+                                    
+                                    for (const targetNameItem of targetName) {
+                                        
+                                        if (stream['Profile'][metadata][targetNameItem]?._text) {
+                                            newFileName += (newFileName ? '#' : '') + stream['Profile'][metadata][targetNameItem]._text;
+                                        }
+                                        
+                                    }
+                                    
+                                } else {
+                                    newFileName = stream['Profile'][metadata][targetName]._text;
+                                }
                             }
 
                             await fs.writeFile(
-                                itemRoot + '/' + newFileName,
+                                itemRoot + '/' + newFileName + '-meta.xml',
                                 convert.json2xml(JSON.stringify(model), config.xmlExport)
                             );
                         }
